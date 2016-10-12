@@ -35,10 +35,15 @@ void draw() {
   
   // draw a rectangle that is affected by sensor data
   background(0); 
-  translate(width/2 + accel.x, height/2 + accel.y); 
+  
+  float xOffset = map(accel.x,-1,1,-50,50); 
+  float yOffset = map(accel.y,-1,1,-50,50); 
+  
+  translate(width/2 + xOffset, height/2 + yOffset); 
   rotate(gyro.x); 
   rectMode(CENTER);
-  rect(0,0, 30,30); 
+  float scale = map(gyro.y, -1,1,20,70); 
+  rect(0,0, scale,scale); 
 }
 
 
